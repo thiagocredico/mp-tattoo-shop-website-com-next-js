@@ -1,19 +1,25 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "motion/react";
 
 const whatsappUrl =
   "https://wa.me/5511999999999?text=Oi%20Sandro%2C%20quero%20conversar%20sobre%20uma%20tatuagem!";
 
 export function WhatsAppLink({ children = "Agendar conversa" }: { children?: React.ReactNode }) {
   return (
-    <a
+    <motion.a
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-3 rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-bold uppercase tracking-wider text-[#111110] transition-transform hover:-translate-y-1"
+      className="group inline-flex items-center gap-3 rounded-full bg-(--accent) px-6 py-3 text-sm font-bold uppercase tracking-wider text-[#111110]"
+      whileHover={{ y: -4, scale: 1.03 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ type: "spring", stiffness: 400, damping: 20 }}
     >
       {children}
-      <span aria-hidden="true" className="text-lg leading-none">↗</span>
-    </a>
+      <span aria-hidden="true" className="text-lg leading-none transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+    </motion.a>
   );
 }
 
@@ -22,14 +28,14 @@ export function SiteHeader() {
     <header className="absolute left-0 top-0 z-20 w-full px-5 py-5 sm:px-10 lg:px-16">
       <nav className="mx-auto flex max-w-7xl flex-col items-start">
         <Link href="/" className="leading-[.79] tracking-[-.08em]" aria-label="Sandro Luz Tattoo Shop - início">
-          <span className="block text-[2.1rem] font-black">Sandro <em className="not-italic text-[var(--accent)]">Luz</em></span>
+          <span className="block text-[2.1rem] font-black">Sandro <em className="not-italic text-(--accent)">Luz</em></span>
           <span className="block text-[2.1rem] font-black">Tattoo</span>
           <span className="block text-[2.1rem] font-black">Shop</span>
         </Link>
         <div className="mt-8 flex items-center gap-7 text-sm font-black tracking-[-.03em] text-[#f4f4f4] sm:gap-9 sm:text-base">
-          <Link className="transition-colors hover:text-[var(--accent)]" href="/servicos">Serviços</Link>
-          <Link className="transition-colors hover:text-[var(--accent)]" href="/sobre">Sobre Mim</Link>
-          <Link className="transition-colors hover:text-[var(--accent)]" href="/contato">Contato</Link>
+          <Link className="transition-colors hover:text-(--accent)" href="/servicos">Serviços</Link>
+          <Link className="transition-colors hover:text-(--accent)" href="/sobre">Sobre Mim</Link>
+          <Link className="transition-colors hover:text-(--accent)" href="/contato">Contato</Link>
         </div>
       </nav>
     </header>
@@ -44,7 +50,7 @@ export function SiteFooter() {
         <span className="hidden sm:inline">•</span>
         <span>Rua Limoeiro, 1000 - Catalão - SP</span>
         <span className="hidden sm:inline">•</span>
-        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[var(--accent)]">(+55 11) 99999 9999 ↗</a>
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-(--accent)">(+55 11) 99999 9999 ↗</a>
       </div>
     </footer>
   );

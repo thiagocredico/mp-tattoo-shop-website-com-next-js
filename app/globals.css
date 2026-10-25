@@ -7,12 +7,15 @@
   --accent: #d6ff3f;
 }
 
+/* Tailwind CSS v4 directive; unsupported by generic CSS linters. */
+/* stylelint-disable at-rule-no-unknown */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
+/* stylelint-enable at-rule-no-unknown */
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -28,7 +31,7 @@ body {
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: auto; }
 ::selection { background: var(--accent); color: #111110; }
 
 .noise {
@@ -43,5 +46,26 @@ html { scroll-behavior: smooth; }
   to { opacity: 1; transform: translateY(0); }
 }
 
+.image-zoom { will-change: transform; backface-visibility: hidden; }
 .image-zoom img { transition: transform .7s cubic-bezier(.22,1,.36,1); }
 .image-zoom:hover img { transform: scale(1.05); }
+
+.text-shimmer {
+  background: linear-gradient(110deg, currentColor 35%, var(--accent) 50%, currentColor 65%);
+  background-size: 250% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: background-position .8s cubic-bezier(.22,1,.36,1);
+}
+
+.text-shimmer:hover { background-position: 100% 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

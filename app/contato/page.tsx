@@ -1,0 +1,8 @@
+import { SiteFooter, SiteHeader, WhatsAppLink } from "@/components/site-header";
+import { SectionTitle } from "@/components/section-title";
+
+export const metadata = { title: "Contato" };
+
+export default function ContactPage() {
+  return <main className="noise min-h-screen"><SiteHeader /><div className="mx-auto max-w-7xl px-5 pb-24 pt-40 sm:px-10 lg:px-16"><div className="grid gap-16 lg:grid-cols-[1.2fr_.8fr]"><div><SectionTitle eyebrow="Contato" title={<>Sua ideia<br /><span className="text-[var(--accent)]">começa aqui.</span></>} description="Me conte um pouco sobre o que você está imaginando. A primeira conversa é sempre sem compromisso." /><div className="mt-12"><WhatsAppLink>Conversar no WhatsApp</WhatsAppLink></div></div><div className="border-t border-white/15 pt-6"><p className="text-xs font-bold uppercase tracking-[.2em] text-[var(--accent)]">Estúdio</p><p className="mt-4 text-xl font-bold">Rua Harmonia, 777<br />Vila Madalena · São Paulo</p><p className="mt-8 text-xs font-bold uppercase tracking-[.2em] text-[var(--accent)]">Horários</p><p className="mt-4 text-sm leading-7 text-[var(--muted)]">Terça a sábado<br />10h — 19h</p><div className="mt-10 border-t border-white/15 pt-6"><p className="text-xs uppercase tracking-[.2em] text-[#77766f]">Instagram</p><p className="mt-2 text-lg font-bold">@sandroluz.tattoo ↗</p></div></div></div><div className="mt-24 border-t border-white/15 pt-8"><p className="max-w-2xl text-2xl font-bold leading-tight sm:text-4xl">“A melhor tatuagem é a que você olha e pensa: não poderia ser de outra pessoa.”</p></div></div><SiteFooter /></main>;
+}
